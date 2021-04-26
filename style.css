@@ -1,3 +1,7 @@
+body {
+  overflow: hidden;
+}
+
 /* MAIN MENU  */
 #mainMenu {
   height: 650px;
