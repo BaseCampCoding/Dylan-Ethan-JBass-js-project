@@ -7,21 +7,21 @@
     <title>Tower Defense</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body id="body" class="bodyOverflow">
 <div id="main-screen">
-        <img id="idle-ghost" src="assets\ gothicvania patreon collection\Ghost-Files\GIFS\ghost-shriek.gif">   
-        <img id="idle-ghost2" src="assets\ gothicvania patreon collection\Ghost-Files\GIFS\ghost-shriek.gif"> 
-        <img id="mainMenu" src="assets\ gothicvania patreon collection\night-town-background-files\night-town-background-previewx2.png">
-        <button id="easy" class="btn btn2" style="margin-left: -130px;">Easy</button>
-        <button id="medium" class="btn btn2">Medium</button>
-        <button id="hard" class="btn btn2 " style="margin-left: 130px;">Hard</button>
-    <div id="game-container">
-        <h1>Tower Defense</h1>
-        <canvas id="canvas" width="800" height="600"></canvas>
-        <script src="main.js" type="text/javascript" >
-            game.init();
-        </script>    
-    </div>
+    <img id="idle-ghost" src="assets\ gothicvania patreon collection\Ghost-Files\GIFS\ghost-shriek.gif">   
+    <img id="idle-ghost2" src="assets\ gothicvania patreon collection\Ghost-Files\GIFS\ghost-shriek.gif"> 
+    <img id="mainMenu" src="assets\ gothicvania patreon collection\night-town-background-files\night-town-background-previewx2.png">
+    <button id="easy" class="btn btn2" style="margin-left: -130px;">Easy</button>
+    <button id="medium" class="btn btn2">Medium</button>
+    <button id="hard" class="btn btn2 " style="margin-left: 130px;">Hard</button>
+</div>
+<div id="game-container">
+    <h1>Tower Defense</h1>
+    <canvas id="canvas"></canvas>
+    <script src="main.js" type="text/javascript" >
+        game.init();
+    </script>    
 </div>
 </body>
 </html>

@@ -1,11 +1,22 @@
-body {
+/* HIDE OVERFLOW CLASS */
+.bodyOverflow {
   overflow: hidden;
+}
+
+/* MAIN SCREEN */
+#main-screen {
+  display: block;
 }
 
 /* MAIN MENU  */
 #mainMenu {
   height: 650px;
   width: 1410px;
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
 }
 
 /* MAIN MENU GHOST CSS */
@@ -16,6 +27,11 @@ body {
   height: 400px;
   -webkit-filter: brightness(1.4);
   filter: brightness(1.4);
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
 }
 
 #idle-ghost2 {
@@ -26,6 +42,11 @@ body {
   height: 400px;
   -webkit-filter: brightness(1.4);
   filter: brightness(1.4);
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
 }
 
 /* END MAIN MENU GHOST CSS */
@@ -83,3 +104,17 @@ body {
 }
 
 /* END BUTTON CSS */
+
+/* GAME CONTAINER */
+#game-container {
+  bottom: 90;
+}
+
+/* END GAME CONTAINER */
+
+/* CANVAS */
+#canvas {
+  background: grey;
+  height: 600px;
+  width: 800px;
+}
