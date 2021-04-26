@@ -1,0 +1,82 @@
+body {
+  color: black;
+}
+
+#mainMenu {
+  height: 650px;
+  width: 1410px;
+}
+
+#idle-ghost {
+  position: absolute;
+  bottom: 0;
+  width: 480px;
+  height: 400px;
+  -webkit-filter: brightness(1.7);
+  filter: brightness(1.7);
+}
+
+#idle-ghost2 {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 480px;
+  height: 400px;
+  -webkit-filter: brightness(1.7);
+  filter: brightness(1.7);
+}
+
+.hideMain {
+  visibility: hidden;
+}
+
+#animation {
+  position: relative;
+  text-align: center;
+  margin-top: 380px;
+}
+.btn2 {
+  border: 1px solid #ffffff;
+  background: none;
+  padding: 10px 20px;
+  font-size: 20px;
+  font-family: "Work Sans";
+  cursor: pointer;
+  transition: 0.1s;
+  overflow: hidden;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+.btn2 {
+  color: rgb(181, 181, 181);
+}
+
+.btn2:hover {
+  color: rgb(0, 0, 0);
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: #b8b8b8;
+  z-index: -1;
+  transition: 0.8s;
+  opacity: 50%;
+}
+
+.btn2::before {
+  bottom: 0;
+  border-radius: 50% 50% 0 0;
+}
+
+.btn2:hover::before {
+  height: 180%;
+}
