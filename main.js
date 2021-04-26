@@ -33,22 +33,23 @@ const game = {
         
     },
     draw: function () {
-        let image2 = new Image();
-        image2.src = "assets/ gothicvania patreon collection/Gothic-hero-Files/GIFS/gothic-hero-run.gif";
+       
 
-        game.drawEnemy();
 
+        game.drawEnemy(100, 100, 5, 'red'); 
+        
         Window.requestAnimationFrame(game.draw);
     },
 
-    drawEnemy: function()
-    {
-        game.ctx.beginPath();
+    drawEnemy: function(x, y, r, color)
+    {   
         let image2 = new Image();
-        image2.src = "assets/ gothicvania patreon collection/Ghost-Files/GIFS/ghost-vanish.gif";
-        ctx.drawImage(image2, 100, 100, 5);
+        image2.src = "assets/ gothicvania patreon collection/Gothic-hero-Files/PNG/gothic-hero-jump.png";
+        game.ctx.beginPath();
+        game.ctx.arc(x,y,r,0,2*Math.PI);
+        game.ctx.fillStyle = color;
+        game.ctx.fill();
 
-        
 
     },
 };
