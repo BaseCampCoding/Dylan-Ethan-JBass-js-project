@@ -1,5 +1,4 @@
 const mainScreen = document.getElementById("main-screen");
-console.log(mainScreen)
 function hideMainScreen(){
     mainScreen.classList.add("hideMain")
     
@@ -8,16 +7,22 @@ const easyBtn = document.getElementById("easy").addEventListener('click', hideMa
 const medBtn = document.getElementById("medium").addEventListener('click', hideMainScreen)
 const hardBtn = document.getElementById("hard").addEventListener('click', hideMainScreen)
 
+const game = {
+    canvas: false,
+    ctx: false,
+    init: function () {
+        this.canvas = document.getElementById('canvas');
+        this.ctx = this.canvas.getContext('2d');
+      
+        setInterval(game.update, 1000/30);
+        
+        window.requestAnimationFrame(game.draw);
+    },
+    update: function () {
+        
+    },
+    draw: function () {
 
-
-
-
-// Global Vars
-
-
-// Game board
-
-// Enemies
-
-// Projectiles
-
+        Window.requestAnimationFrame(game.draw);
+    },
+};

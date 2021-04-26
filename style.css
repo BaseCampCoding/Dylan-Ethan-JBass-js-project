@@ -1,19 +1,17 @@
-body {
-  color: black;
-}
-
+/* MAIN MENU  */
 #mainMenu {
   height: 650px;
   width: 1410px;
 }
 
+/* MAIN MENU GHOST CSS */
 #idle-ghost {
   position: absolute;
   bottom: 0;
   width: 480px;
   height: 400px;
-  -webkit-filter: brightness(1.7);
-  filter: brightness(1.7);
+  -webkit-filter: brightness(1.4);
+  filter: brightness(1.4);
 }
 
 #idle-ghost2 {
@@ -22,19 +20,18 @@ body {
   bottom: 0;
   width: 480px;
   height: 400px;
-  -webkit-filter: brightness(1.7);
-  filter: brightness(1.7);
+  -webkit-filter: brightness(1.4);
+  filter: brightness(1.4);
 }
 
+/* END MAIN MENU GHOST CSS */
+
+/* CLASS TO HIDE MAIN */
 .hideMain {
   visibility: hidden;
 }
 
-#animation {
-  position: relative;
-  text-align: center;
-  margin-top: 380px;
-}
+/* MAIN MENU BUTTON CSS */
 .btn2 {
   border: 1px solid #ffffff;
   background: none;
@@ -80,3 +77,5 @@ body {
 .btn2:hover::before {
   height: 180%;
 }
+
+/* END BUTTON CSS */
