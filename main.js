@@ -1,3 +1,12 @@
+const mainScreen = document.getElementById("main-screen");
+function hideMainScreen(){
+    mainScreen.classList.add("hideMain")
+    
+}
+const easyBtn = document.getElementById("easy").addEventListener('click', hideMainScreen)
+const medBtn = document.getElementById("medium").addEventListener('click', hideMainScreen)
+const hardBtn = document.getElementById("hard").addEventListener('click', hideMainScreen)
+
 const game = {
     canvas: false,
     ctx: false,

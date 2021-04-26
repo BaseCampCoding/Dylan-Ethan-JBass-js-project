@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tower Defense</title>
-    <link rel="stylesheet" href="game.css">
-    <script type="text/javascript" src="game.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<div id="gui">
-    <h1>Tower Defense</h1>
-    <div id="stats"></div>
-    <div id="buttons"></div>
+<div id="main-screen">
+    <img id="idle-ghost" src="assets\ gothicvania patreon collection\Ghost-Files\GIFS\ghost-shriek.gif">   
+    <img id="idle-ghost2" src="assets\ gothicvania patreon collection\Ghost-Files\GIFS\ghost-shriek.gif"> 
+    <img id="mainMenu" src="assets\ gothicvania patreon collection\night-town-background-files\night-town-background-previewx2.png">
+    <button id="easy" class="btn btn2" style="margin-left: -130px;">Easy</button>
+    <button id="medium" class="btn btn2">Medium</button>
+    <button id="hard" class="btn btn2 " style="margin-left: 130px;">Hard</button>
 </div>
+
+<div id="game-container">
 <canvas id="canvas" width="800" height="600"></canvas>
 <script type="text/javascript">
     game.init();
 </script>    
+</div>
+
+
 </body>
 </html>
+<script src="main.js"></script>
