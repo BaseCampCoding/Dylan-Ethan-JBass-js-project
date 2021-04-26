@@ -1,3 +1,4 @@
+
 const body = document.getElementById("body");
 const mainScreen = document.getElementById("main-screen");
 const easyBtn = document.getElementById("easy");
@@ -26,41 +27,7 @@ hardBtn.addEventListener("click", function(){
     hardMode()
 });
 
-const game = {
-    canvas: false,
-    ctx: false,
-    init: function () {
-        this.canvas = document.getElementById('canvas');
-        this.ctx = this.canvas.getContext('2d');
-      
-        setInterval(game.update, 1000/30);
-        
-        window.requestAnimationFrame(game.draw);
-    },
-    update: function () {
-        
-    },
-    draw: function () {
-       
 
-
-        game.drawEnemy(100, 100, 5, 'red'); 
-        
-        Window.requestAnimationFrame(game.draw);
-    },
-
-    drawEnemy: function(x, y, r, color)
-    {   
-        let image2 = new Image();
-        image2.src = "assets/ gothicvania patreon collection/Gothic-hero-Files/PNG/gothic-hero-jump.png";
-        game.ctx.beginPath();
-        game.ctx.arc(x,y,r,0,2*Math.PI);
-        game.ctx.fillStyle = color;
-        game.ctx.fill();
-
-
-    },
-};
 
 // EASY MODE
 function easyMode(){
