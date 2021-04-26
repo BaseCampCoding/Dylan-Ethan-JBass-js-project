@@ -16,7 +16,7 @@
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
-  user-drag: none;
+  -user-drag: none;
 }
 
 /* MAIN MENU GHOST CSS */
@@ -31,7 +31,7 @@
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
-  user-drag: none;
+  -user-drag: none;
 }
 
 #idle-ghost2 {
@@ -46,7 +46,7 @@
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
-  user-drag: none;
+  -user-drag: none;
 }
 
 /* END MAIN MENU GHOST CSS */
