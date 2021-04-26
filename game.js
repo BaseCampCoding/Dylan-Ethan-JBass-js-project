@@ -14,24 +14,20 @@ const game = {
         
     },
     draw: function () {
-        var myGif = GIF();
-        myGIF.load("assets/ gothicvania patreon collection/Gothic-hero-Files/GIFS/gothic-hero-run.gif")
         heroImage = new Image();
-        heroImage.src = "assets/ gothicvania patreon collection/Gothic-hero-Files/GIFS/gothic-hero-run.gif";
+        heroImage.src = "assets/ gothicvania patreon collection/Fire-Skull-Files/GIF/fire-skull-no-fire.gif";
        
-        game.drawEnemy(100,100,5, myGif.image); 
+        game.drawEnemy(heroImage, 100, 100); 
         
         window.requestAnimationFrame(game.draw);
     },
 
-    drawEnemy: function(x, y, r, image)
+    drawEnemy: function(image, x, y)
     {   
         let image2 = new Image();
         image2.src = "assets/ gothicvania patreon collection/Gothic-hero-Files/PNG/gothic-hero-jump.png";
         game.ctx.beginPath();
-        game.ctx.arc(x,y,r,0,2*Math.PI);
-        game.ctx.fillStyle = image;
-        game.ctx.fill();
+        game.ctx.drawImage(image, x, y);
 
 
     },
