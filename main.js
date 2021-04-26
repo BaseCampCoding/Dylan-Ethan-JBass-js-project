@@ -22,18 +22,21 @@ const game = {
         
     },
     draw: function () {
+        let image2 = new Image();
+        image2.src = "assets/ gothicvania patreon collection/Gothic-hero-Files/GIFS/gothic-hero-run.gif";
 
-        game.drawEnemy(100, 100, 5, 'rgb(250, 0, 0)');
+        game.drawEnemy();
 
         Window.requestAnimationFrame(game.draw);
     },
 
-    drawEnemy: function(x, y,r,)
+    drawEnemy: function()
     {
         game.ctx.beginPath();
-        game.ctx.arc(x,y,r,0,2*Math.PI);
-        game.ctx.fillStyle = color;
-        game.ctx.fill();
+        let image2 = new Image();
+        image2.src = "assets/ gothicvania patreon collection/Ghost-Files/GIFS/ghost-vanish.gif";
+        ctx.drawImage(image2, 100, 100, 5);
+
         
 
     },
