@@ -10,7 +10,7 @@ const game = {
         setInterval(game.update, 1000/30);
 
         game.mapEntities.create(heroImage, 10, 10, 50, 50);
-        game.mapEntities.create(heroImage, 15, 15, 50, 50);
+        game.mapEntities.create(heroImage, 30, 30, 50, 50);
         
         window.requestAnimationFrame(game.draw);
     },
