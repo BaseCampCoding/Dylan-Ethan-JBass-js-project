@@ -90,6 +90,7 @@ function easyMode(){
     
                 this.follower = { t: 0, vec: new Phaser.Math.Vector2() };
                 this.hp = 0;
+                this.money = 0;
             },
             
     
@@ -108,7 +109,9 @@ function easyMode(){
                 // if hp drops below 0 we deactivate this enemy
                 if(this.hp <= 0) {
                     this.setActive(false);
-                    this.setVisible(false);    
+                    this.setVisible(false);  
+                    this.money ++;
+                    console.log(this.money)
                 }
             },
             update: function (time, delta)
@@ -313,7 +316,6 @@ function easyMode(){
         
         
     }
-    
     
 };
 
