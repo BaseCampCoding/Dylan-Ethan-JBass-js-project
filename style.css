@@ -3,6 +3,12 @@
   overflow: hidden;
 }
 
+.title {
+  position: relative;
+  color: white;
+  font-family: 'Creepster', cursive;
+}
+
 /* MAIN SCREEN */
 #main-screen {
   display: block;
