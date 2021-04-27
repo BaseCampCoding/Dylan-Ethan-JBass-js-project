@@ -17,10 +17,11 @@
 /* TITLE */
 #title {
   position: absolute;
-  top: 30%;
+  font-family: 'Creepster', cursive;
+  top: 25%;
   left: 0;
   right: 0;
-  font-size: 30px;
+  font-size: 60px;
   text-align: center;
   color: white;
 }
