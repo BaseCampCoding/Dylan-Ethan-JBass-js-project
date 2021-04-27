@@ -41,7 +41,7 @@ function easyMode(){
     let config = {
         type: Phaser.AUTO,
         parent: 'content',
-        width: 640,
+        width: 1300,
         height: 512,
         physics: {
             default: 'arcade'
@@ -75,7 +75,7 @@ function easyMode(){
     
     function preload() {    
         this.load.atlas('sprites', 'assets/spritesheet.png', 'assets/spritesheet.json');
-        this.load.image('bullet', 'assets/bullet.png');
+        this.load.image('bullet', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/fire-ball.png');
     }
     
     let Enemy = new Phaser.Class({
@@ -90,8 +90,8 @@ function easyMode(){
     
                 this.follower = { t: 0, vec: new Phaser.Math.Vector2() };
                 this.hp = 0;
-                this.money = 0
             },
+            
     
             startOnPath: function ()
             {
@@ -108,9 +108,7 @@ function easyMode(){
                 // if hp drops below 0 we deactivate this enemy
                 if(this.hp <= 0) {
                     this.setActive(false);
-                    this.setVisible(false); 
-                    this.money += 10  
-                    console.log(money)   
+                    this.setVisible(false);    
                 }
             },
             update: function (time, delta)
@@ -345,17 +343,17 @@ function mediumMode(){
     
     let ENEMY_SPEED = 2/10000;
     
-    let BULLET_DAMAGE = 50;
+    let BULLET_DAMAGE = 70;
     
-    let map =  [[ 0,-1, 0, 0, 0, 0, 0, 0, 0, 0],
+    let map = [[ 0,-1, 0, 0, 0, 0, 0, 0, 0, 0],
                 [ 0,-1, 0, 0, 0, 0, 0, 0, 0, 0],
                 [ 0,-1,-1,-1,-1,-1,-1,-1, 0, 0],
                 [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
                 [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
-                [ 0, 0, 0, 0,-1,-1,-1,-1, 0, 0],
-                [ 0, 0, 0, 0,-1, 0, 0, 0, 0, 0],
-                [ 0, 0, 0, 0,-1, 0, 0, 0, 0, 0]];
-    
+                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0]];
+                
     function preload() {    
         this.load.atlas('sprites', 'assets/spritesheet.png', 'assets/spritesheet.json');
         this.load.image('bullet', 'assets/bullet.png');
@@ -378,7 +376,7 @@ function mediumMode(){
             startOnPath: function ()
             {
                 this.follower.t = 0;
-                this.hp = 200;
+                this.hp = Math.floor(Math.random()* 501);
                 
                 path.getPoint(this.follower.t, this.follower.vec);
                 
@@ -617,18 +615,18 @@ function hardMode(){
     let turrets;
     let enemies;
     
-    let ENEMY_SPEED = 1/10000;
+    let ENEMY_SPEED = 5/10000;
     
-    let BULLET_DAMAGE = 50;
+    let BULLET_DAMAGE = 60;
     
     let map =  [[ 0,-1, 0, 0, 0, 0, 0, 0, 0, 0],
                 [ 0,-1, 0, 0, 0, 0, 0, 0, 0, 0],
                 [ 0,-1,-1,-1,-1,-1,-1,-1, 0, 0],
                 [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
                 [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
-                [ 0, 0, 0, 0,-1,-1,-1,-1, 0, 0],
-                [ 0, 0, 0, 0,-1, 0, 0, 0, 0, 0],
-                [ 0, 0, 0, 0,-1, 0, 0, 0, 0, 0]];
+                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0]];
     
     function preload() {    
         this.load.atlas('sprites', 'assets/spritesheet.png', 'assets/spritesheet.json');
@@ -652,7 +650,7 @@ function hardMode(){
             startOnPath: function ()
             {
                 this.follower.t = 0;
-                this.hp = 100;
+                this.hp = Math.floor(Math.random()* 1001);
                 
                 path.getPoint(this.follower.t, this.follower.vec);
                 
