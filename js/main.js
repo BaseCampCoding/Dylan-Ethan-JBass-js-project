@@ -9,6 +9,7 @@ const hardBtn = document.getElementById("hard");
 window.onload = function (){
     mainScreen.style.display = "block";
     gameContainer.style.display = "none";
+    gameOver.style.display = "block"
 }
 
 // EASY BUTTON EVENT
