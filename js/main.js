@@ -4,12 +4,13 @@ const mainScreen = document.getElementById("main-screen");
 const easyBtn = document.getElementById("easy");
 const medBtn = document.getElementById("medium");
 const hardBtn = document.getElementById("hard");
+const moneyCounter = document.getElementById("money")
 
 // WINDOW ONLOAD 
 window.onload = function (){
     mainScreen.style.display = "block";
     gameContainer.style.display = "none";
-    gameOver.style.display = "block"
+    // gameOver.style.display = "block"
 }
 
 // EASY BUTTON EVENT
@@ -42,7 +43,7 @@ function easyMode(){
     let config = {
         type: Phaser.AUTO,
         parent: 'content',
-        width: 1300,
+        width: 1280,
         height: 512,
         physics: {
             default: 'arcade'
@@ -60,6 +61,7 @@ function easyMode(){
     let path;
     let turrets;
     let enemies;
+    let money = 5;
     
     let money = 0;
     
@@ -67,14 +69,14 @@ function easyMode(){
     
     let BULLET_DAMAGE = 50;
     
-    let map =  [[ 0,-1, 0, 0, 0, 0, 0, 0, 0, 0],
-                [ 0,-1, 0, 0, 0, 0, 0, 0, 0, 0],
-                [ 0,-1,-1,-1,-1,-1,-1,-1, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
-                [ 0, 0, 0, 0,-1,-1,-1,-1, 0, 0],
-                [ 0, 0, 0, 0,-1, 0, 0, 0, 0, 0],
-                [ 0, 0, 0, 0,-1, 0, 0, 0, 0, 0]];
+    let map =  [[ 0,-1, 0, 0, 0, 0, 0, 0, 0,-1,-1,-1,-1, 0 , 0 , 0 , 0, 0, 0, 0],
+                [ 0,-1, 0, 0, 0, 0, 0, 0, 0,-1, 0, 0,-1, 0 , 0 , 0 , 0, 0, 0, 0],
+                [ 0,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0,-1, 0 , 0 , 0 , 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1,-1 ,-1, -1 , 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0 ,-1 , 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1,-1,-1, -1 ,-1,-1 , 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1, 0, 0, 0 , 0 , 0 , 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1, 0, 0, 0 , 0 , 0 , 0, 0, 0, 0]];
     
     function preload() {    
         this.load.atlas('sprites', 'assets/spritesheet.png', 'assets/spritesheet.json');
@@ -112,8 +114,8 @@ function easyMode(){
                 if(this.hp <= 0) {
                     this.setActive(false);
                     this.setVisible(false);  
-                    money++
-                   
+                    money += 2;
+                    moneyCounter.innerText = money
                 }
             },
             update: function (time, delta)
@@ -152,10 +154,18 @@ function easyMode(){
                 Phaser.GameObjects.Image.call(this, scene, 0, 0, 'sprites', 'turret');
                 this.nextTic = 0;
             },
-            place: function(i, j) {            
-                this.y = i * 64 + 64/2;
-                this.x = j * 64 + 64/2;
-                map[i][j] = 1;            
+            place: function(i, j) {  
+                if (money >= 5){
+                    money -= 5;
+                    moneyCounter.innerText = money
+                    this.y = i * 64 + 64/2;
+                    this.x = j * 64 + 64/2;
+                    map[i][j] = 1; 
+                    
+                } else{
+                    this.y = i * -50
+                    this.x = i * -50
+                }         
             },
             fire: function() {
                 let enemy = getEnemy(this.x, this.y, 200);
@@ -229,11 +239,17 @@ function easyMode(){
         path = this.add.path(96, -32);
         path.lineTo(96, 164);
         path.lineTo(480, 164);
-        path.lineTo(480, 350);
-        path.lineTo(280, 350);
-        path.lineTo(280, 550);
-        
-        graphics.lineStyle(2, 0xffffff, 1);
+        path.lineTo(610,164)
+        path.lineTo(610, 30)
+        path.lineTo(800, 30)
+        path.lineTo(800, 225)
+        path.lineTo(900, 225)
+        path.lineTo(990, 225)
+        path.lineTo(990, 355)
+        path.lineTo(670, 355)
+        path.lineTo(670, 530)
+
+        graphics.lineStyle(1, 0xffffff, 1);
         path.draw(graphics);
         
         enemies = this.physics.add.group({ classType: Enemy, runChildUpdate: true });
@@ -265,9 +281,9 @@ function easyMode(){
         graphics.lineStyle(1, 0x0000ff, 0.8);
         for(let i = 0; i < 8; i++) {
             graphics.moveTo(0, i * 64);
-            graphics.lineTo(640, i * 64);
+            graphics.lineTo(1300, i * 64);
         }
-        for(let j = 0; j < 10; j++) {
+        for(let j = 0; j < 21; j++) {
             graphics.moveTo(j * 64, 0);
             graphics.lineTo(j * 64, 512);
         }
@@ -318,6 +334,7 @@ function easyMode(){
         
         
     }
+    
     
 };
 
