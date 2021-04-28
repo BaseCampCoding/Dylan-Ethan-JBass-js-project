@@ -78,6 +78,7 @@ function easyMode(){
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1, 0, 0, 0 , 0 , 0 , 0, 0, 0, 0]];
     
     function preload() {    
+        this.load.image("background", "assets/ gothicvania patreon collection/Old-dark-Castle-tileset-Files/PNG/preview-old-dark-castle-interior-tileset.png");
         this.load.atlas('sprites', 'assets/spritesheet.png', 'assets/spritesheet.json');
         this.load.spritesheet('bullet', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/fire-ball.png', {
             frameWidth: 16,
@@ -238,6 +239,8 @@ function easyMode(){
         });
      
     function create() {
+        this.background = this.add.tileSprite(0, 0, config.width, config.height, 'background')
+        this.background.setOrigin(0,0)
         let graphics = this.add.graphics();    
         drawLines(graphics);
         path = this.add.path(96, -32);
@@ -253,7 +256,7 @@ function easyMode(){
         path.lineTo(670, 355)
         path.lineTo(670, 530)
 
-        graphics.lineStyle(1, 0xffffff, 1);
+        graphics.lineStyle(1, 0xffffff, 0);
         path.draw(graphics);
         
         enemies = this.physics.add.group({ classType: Enemy, runChildUpdate: true });
