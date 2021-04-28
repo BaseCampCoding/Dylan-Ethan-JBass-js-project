@@ -5,6 +5,7 @@ const easyBtn = document.getElementById("easy");
 const medBtn = document.getElementById("medium");
 const hardBtn = document.getElementById("hard");
 const moneyCounter = document.getElementById("money")
+const scoreCounter = document.getElementById("score")
 
 // WINDOW ONLOAD 
 window.onload = function (){
@@ -62,8 +63,8 @@ function easyMode(){
     let turrets;
     let enemies;
     let money = 5;
-    
-    let money = 0;
+    let score = 0;
+
     
     let ENEMY_SPEED = .5/10000;
     
@@ -116,6 +117,8 @@ function easyMode(){
                     this.setVisible(false);  
                     money += 2;
                     moneyCounter.innerText = money
+                    score += 100
+                    scoreCounter.innerText = score
                 }
             },
             update: function (time, delta)
