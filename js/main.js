@@ -64,7 +64,6 @@ function easyMode(){
     let enemies;
     let money = 5;
     let score = 0;
-
     
     let ENEMY_SPEED = .5/10000;
     
@@ -346,7 +345,7 @@ function mediumMode(){
     let config = {
         type: Phaser.AUTO,
         parent: 'content',
-        width: 640,
+        width: 1280,
         height: 512,
         physics: {
             default: 'arcade'
@@ -364,19 +363,20 @@ function mediumMode(){
     let path;
     let turrets;
     let enemies;
+    let money = 10;
     
     let ENEMY_SPEED = 2/10000;
     
     let BULLET_DAMAGE = 70;
     
-    let map = [[ 0,-1, 0, 0, 0, 0, 0, 0, 0, 0],
-                [ 0,-1, 0, 0, 0, 0, 0, 0, 0, 0],
-                [ 0,-1,-1,-1,-1,-1,-1,-1, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0]];
+    let map =  [[ 0, 0, 0, 0, 0, 0, 0, 0, 0,-1,-1,-1, 0, 0, 0,-1, 0, 0, 0, 0],
+                [ 0, 0,-1,-1,-1,-1,-1, 0, 0,-1, 0,-1,-1,-1,-1,-1, 0, 0, 0, 0],
+                [ 0, 0,-1, 0, 0, 0,-1, 0, 0,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0, 0],
+                [ 0, 0,-1, 0, 0, 0,-1, 0, 0, 0, 0, 0, 0, 0,-1, 0, 0, 0, 0, 0],
+                [ 0, 0,-1,-1,-1, 0,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0,-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1, 0, 0]];
                 
     function preload() {    
         this.load.atlas('sprites', 'assets/spritesheet.png', 'assets/spritesheet.json');
@@ -412,7 +412,9 @@ function mediumMode(){
                 // if hp drops below 0 we deactivate this enemy
                 if(this.hp <= 0) {
                     this.setActive(false);
-                    this.setVisible(false);      
+                    this.setVisible(false);  
+                    money += 1; 
+                    moneyCounter.innerText = money 
                 }
             },
             update: function (time, delta)
@@ -451,10 +453,18 @@ function mediumMode(){
                 Phaser.GameObjects.Image.call(this, scene, 0, 0, 'sprites', 'turret');
                 this.nextTic = 0;
             },
-            place: function(i, j) {            
-                this.y = i * 64 + 64/2;
-                this.x = j * 64 + 64/2;
-                map[i][j] = 1;            
+            place: function(i, j) {  
+                if (money >= 5){
+                    money -= 5;
+                    moneyCounter.innerText = money
+                    this.y = i * 64 + 64/2;
+                    this.x = j * 64 + 64/2;
+                    map[i][j] = 1; 
+                    
+                } else{
+                    this.y = i * -50
+                    this.x = i * -50
+                }                   
             },
             fire: function() {
                 let enemy = getEnemy(this.x, this.y, 200);
@@ -487,7 +497,7 @@ function mediumMode(){
                 this.incY = 0;
                 this.lifespan = 0;
     
-                this.speed = Phaser.Math.GetSpeed(600, 1);
+                this.speed = Phaser.Math.GetSpeed(1000, 1);
             },
     
             fire: function (x, y, angle)
@@ -525,10 +535,24 @@ function mediumMode(){
     function create() {
         let graphics = this.add.graphics();    
         drawLines(graphics);
-        path = this.add.path(96, -32);
-        path.lineTo(96, 164);
-        path.lineTo(480, 164);
-        path.lineTo(480, 544);
+        path = this.add.path(993, -32);
+        path.lineTo(993, 100);
+        path.lineTo(735, 100)
+        path.lineTo(735, 30)
+        path.lineTo(610, 30)
+        path.lineTo(610, 150)
+        path.lineTo(610, 160)
+        path.lineTo(930, 160)
+        path.lineTo(930, 290)
+        path.lineTo(415, 290)
+        path.lineTo(415, 100)
+        path.lineTo(160, 100)
+        path.lineTo(160, 290)
+        path.lineTo(290, 290)
+        path.lineTo(290, 420)
+        path.lineTo(1125, 420)
+        path.lineTo(1125, 530)
+        
         
         graphics.lineStyle(2, 0xffffff, 1);
         path.draw(graphics);
@@ -562,9 +586,9 @@ function mediumMode(){
         graphics.lineStyle(1, 0x0000ff, 0.8);
         for(let i = 0; i < 8; i++) {
             graphics.moveTo(0, i * 64);
-            graphics.lineTo(640, i * 64);
+            graphics.lineTo(1300, i * 64);
         }
-        for(let j = 0; j < 10; j++) {
+        for(let j = 0; j < 21; j++) {
             graphics.moveTo(j * 64, 0);
             graphics.lineTo(j * 64, 512);
         }
