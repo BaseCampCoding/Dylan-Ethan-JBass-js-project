@@ -760,6 +760,7 @@ function hardMode(){
                 {
                     this.setActive(false);
                     this.setVisible(false);
+                    playerHealth.value -= 10;
                 }
             }
     
@@ -851,7 +852,7 @@ function hardMode(){
                 {
                     this.setActive(false);
                     this.setVisible(false);
-                    playerHealth.value -= 10;
+                    
                 }
             }
     

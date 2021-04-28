@@ -33,7 +33,7 @@ progress::-webkit-progress-value {
 }
 
 progress::-webkit-progress-bar {
-  background: blue;
+  background: rgb(255, 255, 255);
 }
 
 /* MAIN SCREEN */
