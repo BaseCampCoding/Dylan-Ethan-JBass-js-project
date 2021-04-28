@@ -76,7 +76,7 @@ function easyMode(){
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0 ,-1 , 0, 0, 0, 0],
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1,-1,-1, -1 ,-1,-1 , 0, 0, 0, 0],
                 [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1, 0, 0, 0 , 0 , 0 , 0, 0, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1, 0, 0, 0 , 0 , 0 , 0, 0, 0, 0]];
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1, 0, 0, 0 , 0 , 0 , 0, 0, 0, 0]]
     
     function preload() {    
         this.load.image("background", "assets/ gothicvania patreon collection/Old-dark-Castle-tileset-Files/PNG/preview-old-dark-castle-interior-tileset.png");
@@ -244,7 +244,7 @@ function easyMode(){
         this.background = this.add.tileSprite(0, 0, config.width, config.height, 'background')
         this.background.setOrigin(0,0)
         let graphics = this.add.graphics();    
-        drawLines(graphics);
+        drawLines(graphics)
         path = this.add.path(96, -32);
         path.lineTo(96, 164);
         path.lineTo(480, 164);
@@ -259,7 +259,7 @@ function easyMode(){
         path.lineTo(670, 530)
 
         graphics.lineStyle(1, 0xffffff, 0);
-        path.draw(graphics);
+        path.draw(graphics).setVisible(false);
         
         enemies = this.physics.add.group({ classType: Enemy, runChildUpdate: true });
         
