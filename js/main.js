@@ -79,7 +79,10 @@ function easyMode(){
     
     function preload() {    
         this.load.atlas('sprites', 'assets/spritesheet.png', 'assets/spritesheet.json');
-        this.load.image('bullet', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/fire-ball.png');
+        this.load.spritesheet('bullet', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/fire-ball.png', {
+            frameWidth: 16,
+            frameHeight: 16
+        });
     }
     
     let Enemy = new Phaser.Class({
@@ -187,18 +190,18 @@ function easyMode(){
         
     let Bullet = new Phaser.Class({
     
-            Extends: Phaser.GameObjects.Image,
+            Extends: Phaser.GameObjects.Sprite,
     
             initialize:
     
             function Bullet (scene)
             {
-                Phaser.GameObjects.Image.call(this, scene, 0, 0, 'bullet');
-    
+                Phaser.GameObjects.Sprite.call(this, scene, 0, 0, 'bullet');
+
                 this.incX = 0;
                 this.incY = 0;
                 this.lifespan = 0;
-    
+
                 this.speed = Phaser.Math.GetSpeed(600, 1);
             },
     
@@ -264,6 +267,14 @@ function easyMode(){
         this.physics.add.overlap(enemies, bullets, damageEnemy);
         
         this.input.on('pointerdown', placeTurret);
+
+        this.anims.create({ 
+            key: "fire", 
+            frames: this.anims.generateFrameNumbers("bullet"),
+            frameRate: 20, 
+            repeat: -1,
+          });
+
     }
     
     function damageEnemy(enemy, bullet) {  
@@ -330,6 +341,7 @@ function easyMode(){
         if (bullet){;
             {
                 bullet.fire(x, y, angle);
+                bullet.play('fire');
             }
         }
         
@@ -381,7 +393,10 @@ function mediumMode(){
                 
     function preload() {    
         this.load.atlas('sprites', 'assets/spritesheet.png', 'assets/spritesheet.json');
-        this.load.image('bullet', 'assets/bullet.png');
+        this.load.spritesheet('bullet', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/fire-ball.png', {
+            frameWidth: 16,
+            frameHeight: 16
+        });
     }
     
     let Enemy = new Phaser.Class({
@@ -487,13 +502,13 @@ function mediumMode(){
         
     let Bullet = new Phaser.Class({
     
-            Extends: Phaser.GameObjects.Image,
+            Extends: Phaser.GameObjects.Sprite,
     
             initialize:
     
             function Bullet (scene)
             {
-                Phaser.GameObjects.Image.call(this, scene, 0, 0, 'bullet');
+                Phaser.GameObjects.Sprite.call(this, scene, 0, 0, 'bullet');
     
                 this.incX = 0;
                 this.incY = 0;
@@ -570,6 +585,14 @@ function mediumMode(){
         this.physics.add.overlap(enemies, bullets, damageEnemy);
         
         this.input.on('pointerdown', placeTurret);
+
+        this.anims.create({ 
+            key: "fire", 
+            frames: this.anims.generateFrameNumbers("bullet"),
+            frameRate: 20, 
+            repeat: -1,
+          });
+
     }
     
     function damageEnemy(enemy, bullet) {  
@@ -636,6 +659,7 @@ function mediumMode(){
         if (bullet)
         {
             bullet.fire(x, y, angle);
+            bullet.play('fire');
         }
     }
     
@@ -681,7 +705,10 @@ function hardMode(){
     
     function preload() {    
         this.load.atlas('sprites', 'assets/spritesheet.png', 'assets/spritesheet.json');
-        this.load.image('bullet', 'assets/bullet.png');
+        this.load.spritesheet('bullet', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/fire-ball.png', {
+            frameWidth: 16,
+            frameHeight: 16
+        });
     }
     
     let Enemy = new Phaser.Class({
@@ -776,13 +803,13 @@ function hardMode(){
         
     let Bullet = new Phaser.Class({
     
-            Extends: Phaser.GameObjects.Image,
+            Extends: Phaser.GameObjects.Sprite,
     
             initialize:
     
             function Bullet (scene)
             {
-                Phaser.GameObjects.Image.call(this, scene, 0, 0, 'bullet');
+                Phaser.GameObjects.Sprite.call(this, scene, 0, 0, 'bullet');
     
                 this.incX = 0;
                 this.incY = 0;
@@ -845,6 +872,14 @@ function hardMode(){
         this.physics.add.overlap(enemies, bullets, damageEnemy);
         
         this.input.on('pointerdown', placeTurret);
+
+        this.anims.create({ 
+            key: "fire", 
+            frames: this.anims.generateFrameNumbers("bullet"),
+            frameRate: 20, 
+            repeat: -1,
+          });
+
     }
     
     function damageEnemy(enemy, bullet) {  
@@ -911,6 +946,7 @@ function hardMode(){
         if (bullet)
         {
             bullet.fire(x, y, angle);
+            bullet.play('fire');
         }
     }
     
