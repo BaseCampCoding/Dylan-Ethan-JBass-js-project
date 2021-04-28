@@ -6,6 +6,7 @@ const medBtn = document.getElementById("medium");
 const hardBtn = document.getElementById("hard");
 const moneyCounter = document.getElementById("money")
 const scoreCounter = document.getElementById("score")
+const playerHealth = document.getElementById("health")
 
 // WINDOW ONLOAD 
 window.onload = function (){
@@ -134,6 +135,7 @@ function easyMode(){
                 {
                     this.setActive(false);
                     this.setVisible(false);
+                    playerHealth.value -= 10;
                 }
             }
     
@@ -317,7 +319,7 @@ function easyMode(){
                 enemy.startOnPath();
     
                 this.nextEnemy = time + 2000;
-            }       
+            }      
         }
     }
     
@@ -448,6 +450,7 @@ function mediumMode(){
                 {
                     this.setActive(false);
                     this.setVisible(false);
+                    playerHealth.value -= 10;
                 }
             }
     
@@ -848,6 +851,7 @@ function hardMode(){
                 {
                     this.setActive(false);
                     this.setVisible(false);
+                    playerHealth.value -= 10;
                 }
             }
     
