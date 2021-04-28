@@ -61,6 +61,8 @@ function easyMode(){
     let turrets;
     let enemies;
     
+    let money = 0;
+    
     let ENEMY_SPEED = .5/10000;
     
     let BULLET_DAMAGE = 50;
@@ -91,7 +93,6 @@ function easyMode(){
     
                 this.follower = { t: 0, vec: new Phaser.Math.Vector2() };
                 this.hp = 0;
-                this.money = 0;
             },
             
     
@@ -111,8 +112,8 @@ function easyMode(){
                 if(this.hp <= 0) {
                     this.setActive(false);
                     this.setVisible(false);  
-                    this.money ++;
-                    console.log(this.money)
+                    money++
+                   
                 }
             },
             update: function (time, delta)
