@@ -19,7 +19,6 @@ window.onload = function (){
 easyBtn.addEventListener("click", function(){
     mainScreen.style.display = "none";
     gameContainer.style.display = "block";
-    body.style.overflow = "scroll";
     easyMode()
 });
 
@@ -27,7 +26,6 @@ easyBtn.addEventListener("click", function(){
 medBtn.addEventListener("click", function(){
     mainScreen.style.display = "none";
     gameContainer.style.display = "block";
-    body.style.overflow = "scroll";
     mediumMode()
 });
 
@@ -35,13 +33,13 @@ medBtn.addEventListener("click", function(){
 hardBtn.addEventListener("click", function(){
     mainScreen.style.display = "none";
     gameContainer.style.display = "block";
-    body.style.overflow = "scroll";
     hardMode()
 });
 
 
 // EASY MODE
 function easyMode(){
+    body.style.overflow = "scroll";
     let config = {
         type: Phaser.AUTO,
         parent: 'content',
@@ -64,6 +62,7 @@ function easyMode(){
     let turrets;
     let enemies;
     let money = 5;
+    moneyCounter.innerText = money
     let score = 0;
     
     let ENEMY_SPEED = .5/10000;
@@ -105,7 +104,7 @@ function easyMode(){
             startOnPath: function ()
             {
                 this.follower.t = 0;
-                this.hp = Math.floor(Math.random()* 300);
+                this.hp = Math.floor(Math.random()* 200);
                 
                 path.getPoint(this.follower.t, this.follower.vec);
                 
@@ -170,8 +169,8 @@ function easyMode(){
                     map[i][j] = 1; 
                     
                 } else{
-                    this.y = i * -50
-                    this.x = i * -50
+                    this.y = i * -500
+                    this.x = i * -500
                 }         
             },
             fire: function() {
@@ -356,6 +355,7 @@ function easyMode(){
 
 // MEDIUM MODE
 function mediumMode(){
+    body.style.overflow = "scroll";
     let config = {
         type: Phaser.AUTO,
         parent: 'content',
@@ -378,10 +378,11 @@ function mediumMode(){
     let turrets;
     let enemies;
     let money = 10;
+    moneyCounter.innerText = money
     
     let ENEMY_SPEED = 2/10000;
     
-    let BULLET_DAMAGE = 70;
+    let BULLET_DAMAGE = 50;
     
     let map =  [[ 0, 0, 0, 0, 0, 0, 0, 0, 0,-1,-1,-1, 0, 0, 0,-1, 0, 0, 0, 0],
                 [ 0, 0,-1,-1,-1,-1,-1, 0, 0,-1, 0,-1,-1,-1,-1,-1, 0, 0, 0, 0],
@@ -417,7 +418,8 @@ function mediumMode(){
             startOnPath: function ()
             {
                 this.follower.t = 0;
-                this.hp = Math.floor(Math.random()* 501);
+                this.hp = Math.floor(Math.random()* 901);
+                console.log(this.hp)
                 
                 path.getPoint(this.follower.t, this.follower.vec);
                 
@@ -430,7 +432,7 @@ function mediumMode(){
                 if(this.hp <= 0) {
                     this.setActive(false);
                     this.setVisible(false);  
-                    money += 1; 
+                    money += 3; 
                     moneyCounter.innerText = money 
                 }
             },
@@ -472,16 +474,16 @@ function mediumMode(){
                 this.nextTic = 0;
             },
             place: function(i, j) {  
-                if (money >= 5){
-                    money -= 5;
+                if (money >= 7){
+                    money -= 7;
                     moneyCounter.innerText = money
                     this.y = i * 64 + 64/2;
                     this.x = j * 64 + 64/2;
                     map[i][j] = 1; 
                     
                 } else{
-                    this.y = i * -50
-                    this.x = i * -50
+                    this.y = i * -500
+                    this.x = i * -500
                 }                   
             },
             fire: function() {
@@ -496,7 +498,7 @@ function mediumMode(){
             {
                 if(time > this.nextTic) {
                     this.fire();
-                    this.nextTic = time + 1000;
+                    this.nextTic = time + 0;
                 }
             }
     });
@@ -572,7 +574,7 @@ function mediumMode(){
         path.lineTo(1125, 530)
         
         
-        graphics.lineStyle(2, 0xffffff, 1);
+        graphics.lineStyle(40, 0xffffff, 1);
         path.draw(graphics);
         
         enemies = this.physics.add.group({ classType: Enemy, runChildUpdate: true });
@@ -632,7 +634,7 @@ function mediumMode(){
                 enemy.setVisible(true);
                 enemy.startOnPath();
     
-                this.nextEnemy = time + 2000;
+                this.nextEnemy = time + 150;
             }       
         }
     }
@@ -668,6 +670,7 @@ function mediumMode(){
 
 // HARD MODE
 function hardMode(){
+    body.style.overflow = "scroll";
     let config = {
         type: Phaser.AUTO,
         parent: 'content',
