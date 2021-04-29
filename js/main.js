@@ -144,6 +144,10 @@ function easyMode(){
                     this.setActive(false);
                     this.setVisible(false);
                     playerHealth.value -= 10;
+                    if (playerHealth.value <= 0) {
+                        alert("Game Over");
+                        document.location.reload();
+                    }
                 }
             }
     
@@ -467,6 +471,10 @@ function mediumMode(){
                     this.setActive(false);
                     this.setVisible(false);
                     playerHealth.value -= 10;
+                    if (playerHealth.value <= 0) {
+                        alert("Game Over");
+                        document.location.reload();
+                    }
                 }
             }
     
@@ -777,6 +785,10 @@ function hardMode(){
                     this.setActive(false);
                     this.setVisible(false);
                     playerHealth.value -= 10;
+                    if (playerHealth.value <= 0) {
+                        alert("Game Over");
+                        document.location.reload();
+                    }
                 }
             }
     
