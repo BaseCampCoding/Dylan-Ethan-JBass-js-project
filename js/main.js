@@ -396,23 +396,24 @@ function mediumMode(){
     let path;
     let turrets;
     let enemies;
-    let money = 10;
+    let money = 1000;
     moneyCounter.innerText = money
     
-    let ENEMY_SPEED = 2/10000;
+    let ENEMY_SPEED = 0.2/10000;
     
     let BULLET_DAMAGE = 50;
     
-    let map =  [[ 0, 0, 0, 0, 0, 0, 0, 0, 0,-1,-1,-1, 0, 0, 0,-1, 0, 0, 0, 0],
-                [ 0, 0,-1,-1,-1,-1,-1, 0, 0,-1, 0,-1,-1,-1,-1,-1, 0, 0, 0, 0],
-                [ 0, 0,-1, 0, 0, 0,-1, 0, 0,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0, 0],
-                [ 0, 0,-1, 0, 0, 0,-1, 0, 0, 0, 0, 0, 0, 0,-1, 0, 0, 0, 0, 0],
-                [ 0, 0,-1,-1,-1, 0,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0, 0],
-                [ 0, 0, 0, 0,-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-                [ 0, 0, 0, 0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1, 0, 0]];
+    let map =  [[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1,-1,-1,-1, 0,-1,-1,-1],
+                [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0,-1,-1,-1,-1,-1,-1,-1],
+                [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0],
+                [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, -1, 0,-1,-1,-1,-1,-1,-1,-1],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0, 0, 0,0,0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [-1,-1,-1,-1,-1,-1,-1,-1,0,-1, -1, -1, 0, 0, 0, 0, 0, 0, 0, 0]];
                 
     function preload() {    
+        this.load.image("background", "assets/ gothicvania patreon collection/Gothic-Horror-Files/PNG/PREVIEW-gothic-horror.png")
         this.load.atlas('sprites', 'assets/spritesheet.png', 'assets/spritesheet.json');
         this.load.spritesheet('bullet', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/fire-ball.png', {
             frameWidth: 16,
@@ -517,7 +518,7 @@ function mediumMode(){
             {
                 if(time > this.nextTic) {
                     this.fire();
-                    this.nextTic = time + 0;
+                    this.nextTic = time + 1000;
                 }
             }
     });
@@ -572,29 +573,50 @@ function mediumMode(){
         });
      
     function create() {
+        this.background = this.add.tileSprite(0, 0, config.width, config.height, 'background')
+        this.background.setOrigin(0,0)
         let graphics = this.add.graphics();    
         drawLines(graphics);
-        path = this.add.path(993, -32);
-        path.lineTo(993, 100);
-        path.lineTo(735, 100)
-        path.lineTo(735, 30)
-        path.lineTo(610, 30)
-        path.lineTo(610, 150)
-        path.lineTo(610, 160)
-        path.lineTo(930, 160)
-        path.lineTo(930, 290)
-        path.lineTo(415, 290)
-        path.lineTo(415, 100)
-        path.lineTo(160, 100)
-        path.lineTo(160, 290)
-        path.lineTo(290, 290)
-        path.lineTo(290, 420)
-        path.lineTo(1125, 420)
-        path.lineTo(1125, 530)
+        path = this.add.path(0, 100);
+        path.lineTo(200, 130);
+        path.lineTo(250, 125)
+        path.lineTo(425, 125)
+        path.lineTo(500, 100)
+        path.lineTo(600, 100)
+        path.lineTo(650, 120)
+        path.lineTo(700, 135)
+        path.lineTo(800, 50)
+        path.lineTo(900, 110)
+        path.lineTo(1270, 120)
+        path.lineTo(1270, 300)
+        path.lineTo(1040, 300)
+        path.lineTo(1020, 290)
+        path.lineTo(900, 290)
+        path.lineTo(800, 230)
+        path.lineTo(720, 320)
+        path.lineTo(600, 300)
+        path.lineTo(550, 250)
+        path.lineTo(400, 300)
+        path.lineTo(300, 300)
+        path.lineTo(200, 310)
+        path.lineTo(150, 300)
+        path.lineTo(0, 300)
+        path.lineTo(0, 500)
+        path.lineTo(250, 500)
+        path.lineTo(300, 470)
+        path.lineTo(425, 470)
+        path.lineTo(500, 440)
+        path.lineTo(560, 440)
+        path.lineTo(630, 480)
+        path.lineTo(700, 490)
+        path.lineTo(790, 400)
+        path.lineTo(860, 460)
+        path.lineTo(1300, 460)
+
         
         
-        graphics.lineStyle(40, 0xffffff, 1);
-        path.draw(graphics);
+        graphics.lineStyle(1, 0xffffff, 0.5);
+        path.draw(graphics).setVisible(false);
         
         enemies = this.physics.add.group({ classType: Enemy, runChildUpdate: true });
         
@@ -653,7 +675,7 @@ function mediumMode(){
                 enemy.setVisible(true);
                 enemy.startOnPath();
     
-                this.nextEnemy = time + 150;
+                this.nextEnemy = time + 10000;
             }       
         }
     }
