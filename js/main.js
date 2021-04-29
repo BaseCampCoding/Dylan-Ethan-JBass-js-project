@@ -401,6 +401,7 @@ function mediumMode(){
     let turrets;
     let enemies;
     let money = 10;
+    let score = 0;
     moneyCounter.innerText = money
     
     let ENEMY_SPEED = .6/10000;
@@ -458,6 +459,8 @@ function mediumMode(){
                     this.setVisible(false);  
                     money += 3; 
                     moneyCounter.innerText = money 
+                    score += 100
+                    scoreCounter.innerText = score
                 }
             },
             update: function (time, delta)
@@ -723,7 +726,7 @@ function hardMode(){
     let config = {
         type: Phaser.AUTO,
         parent: 'content',
-        width: 640,
+        width: 1280,
         height: 512,
         physics: {
             default: 'arcade'
@@ -741,21 +744,25 @@ function hardMode(){
     let path;
     let turrets;
     let enemies;
+    let money = 10
+    moneyCounter.innerText = money
+    let score = 0;
     
     let ENEMY_SPEED = 5/10000;
     
-    let BULLET_DAMAGE = 60;
+    let BULLET_DAMAGE = 100;
     
-    let map =  [[ 0,-1, 0, 0, 0, 0, 0, 0, 0, 0],
-                [ 0,-1, 0, 0, 0, 0, 0, 0, 0, 0],
-                [ 0,-1,-1,-1,-1,-1,-1,-1, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0,-1, 0, 0]];
-    
+    let map =  [[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [-1,-1,-1,-1,-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [-1,-1,-1,-1,-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0,-1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0,-1,-1, -1,-1,-1,-1,-1,-1,-1,-1, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ,0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
+
     function preload() {    
+        this.load.image("background", "hard_platform.jpg")
         this.load.atlas('sprites', 'assets/spritesheet.png', 'assets/spritesheet.json');
         this.load.spritesheet('bullet', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/fire-ball.png', {
             frameWidth: 16,
@@ -792,7 +799,11 @@ function hardMode(){
                 // if hp drops below 0 we deactivate this enemy
                 if(this.hp <= 0) {
                     this.setActive(false);
-                    this.setVisible(false);      
+                    this.setVisible(false);   
+                    score += 100
+                    scoreCounter.innerText = score 
+                    money += 1;
+                    moneyCounter.innerText = money  
                 }
             },
             update: function (time, delta)
@@ -837,9 +848,17 @@ function hardMode(){
                 this.nextTic = 0;
             },
             place: function(i, j) {            
-                this.y = i * 64 + 64/2;
-                this.x = j * 64 + 64/2;
-                map[i][j] = 1;            
+                if (money >= 10){
+                    money -= 10;
+                    moneyCounter.innerText = money
+                    this.y = i * 64 + 64/2;
+                    this.x = j * 64 + 64/2;
+                    map[i][j] = 1; 
+                    
+                } else{
+                    this.y = i * -500
+                    this.x = i * -500
+                }                 
             },
             fire: function() {
                 let enemy = getEnemy(this.x, this.y, 200);
@@ -853,7 +872,7 @@ function hardMode(){
             {
                 if(time > this.nextTic) {
                     this.fire();
-                    this.nextTic = time + 1000;
+                    this.nextTic = time + 60;
                 }
             }
     });
@@ -909,15 +928,22 @@ function hardMode(){
         });
      
     function create() {
-        let graphics = this.add.graphics();    
-        drawLines(graphics);
-        path = this.add.path(96, -32);
-        path.lineTo(96, 164);
-        path.lineTo(480, 164);
-        path.lineTo(480, 544);
+        this.background = this.add.tileSprite(0, 0, config.width, config.height, 'background')
+        this.background.setOrigin(0,0)
+        let graphics = this.add.graphics();
+        path = this.add.path(0, 140);
+        path.lineTo(330, 140);
+        path.lineTo(500, 300);
+        path.lineTo(950, 300);
+        path.lineTo(1000, 260)
+        path.lineTo(1300,260)
         
-        graphics.lineStyle(2, 0xffffff, 1);
-        path.draw(graphics);
+        
+        
+        drawLines(graphics);
+        
+        graphics.lineStyle(1, 0xffffff, 1);
+        path.draw(graphics).setVisible(false);
         
         enemies = this.physics.add.group({ classType: Enemy, runChildUpdate: true });
         
@@ -956,9 +982,9 @@ function hardMode(){
         graphics.lineStyle(1, 0x0000ff, 0.8);
         for(let i = 0; i < 8; i++) {
             graphics.moveTo(0, i * 64);
-            graphics.lineTo(640, i * 64);
+            graphics.lineTo(1300, i * 64);
         }
-        for(let j = 0; j < 10; j++) {
+        for(let j = 0; j < 21; j++) {
             graphics.moveTo(j * 64, 0);
             graphics.lineTo(j * 64, 512);
         }
