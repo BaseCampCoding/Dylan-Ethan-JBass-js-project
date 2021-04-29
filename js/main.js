@@ -89,6 +89,10 @@ function easyMode(){
             frameWidth: 50,
             frameHeight: 67
         });
+        this.load.spritesheet('turret2', 'assets/ gothicvania patreon collection/demon-Files/PNG/demon-idle.png', {
+            frameWidth: 120,
+            frameHeight: 100
+        });
         this.load.spritesheet('bullet', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/fire-ball.png', {
             frameWidth: 16,
             frameHeight: 16
@@ -348,6 +352,11 @@ function easyMode(){
                 turret.setActive(true);
                 turret.setVisible(true);
                 turret.place(i, j);
+                console.log(money)
+                if (money >= 5){
+                    console.log(money)
+                    turret.setTexture('turret2')
+                }
             }   
         }
     }
