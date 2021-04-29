@@ -291,14 +291,6 @@ function easyMode(){
             frameRate: 20, 
             repeat: -1,
           });
-
-        //   this.anims.create({ 
-        //     key: "enemy", 
-        //     frames: this.anims.generateFrameNumbers("enemy"),
-        //     frameRate: 20, 
-        //     repeat: -1,
-        //   });
-
     }
     
     function damageEnemy(enemy, bullet) {  
@@ -336,7 +328,6 @@ function easyMode(){
                 enemy.setActive(true);
                 enemy.setVisible(true);
                 enemy.startOnPath();
-                // enemy.play('enemy')
     
                 this.nextEnemy = time + 2000;
             }      
@@ -420,6 +411,14 @@ function mediumMode(){
     function preload() {    
         this.load.image("background", "assets/ gothicvania patreon collection/Gothic-Horror-Files/PNG/PREVIEW-gothic-horror.png")
         this.load.atlas('sprites', 'assets/spritesheet.png', 'assets/spritesheet.json');
+        this.load.spritesheet('enemy', 'assets/ gothicvania patreon collection/Gothic-hero-Files/PNG/gothic-hero-run.png', {
+            frameWidth: 50,
+            frameHeight: 40
+        });
+        this.load.spritesheet('turret', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/with-stroke/hell-beast-idle.png', {
+            frameWidth: 50,
+            frameHeight: 67
+        });
         this.load.spritesheet('bullet', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/fire-ball.png', {
             frameWidth: 16,
             frameHeight: 16
@@ -434,7 +433,7 @@ function mediumMode(){
     
             function Enemy (scene)
             {
-                Phaser.GameObjects.Sprite.call(this, scene, 0, 0, 'sprites', 'enemy');
+                Phaser.GameObjects.Sprite.call(this, scene, 0, 0, 'enemy');
     
                 this.follower = { t: 0, vec: new Phaser.Math.Vector2() };
                 this.hp = 0;
@@ -501,7 +500,7 @@ function mediumMode(){
     
             function Turret (scene)
             {
-                Phaser.GameObjects.Sprite.call(this, scene, 0, 0, 'sprites', 'turret');
+                Phaser.GameObjects.Sprite.call(this, scene, 0, 0, 'turret');
                 this.nextTic = 0;
             },
             place: function(i, j) {  
@@ -764,6 +763,14 @@ function hardMode(){
     function preload() {    
         this.load.image("background", "hard_platform.jpg")
         this.load.atlas('sprites', 'assets/spritesheet.png', 'assets/spritesheet.json');
+        this.load.spritesheet('enemy', 'assets/ gothicvania patreon collection/Gothic-hero-Files/PNG/gothic-hero-run.png', {
+            frameWidth: 50,
+            frameHeight: 40
+        });
+        this.load.spritesheet('turret', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/with-stroke/hell-beast-idle.png', {
+            frameWidth: 50,
+            frameHeight: 67
+        });
         this.load.spritesheet('bullet', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/fire-ball.png', {
             frameWidth: 16,
             frameHeight: 16
@@ -778,7 +785,7 @@ function hardMode(){
     
             function Enemy (scene)
             {
-                Phaser.GameObjects.Sprite.call(this, scene, 0, 0, 'sprites', 'enemy');
+                Phaser.GameObjects.Sprite.call(this, scene, 0, 0, 'enemy');
     
                 this.follower = { t: 0, vec: new Phaser.Math.Vector2() };
                 this.hp = 0;
@@ -844,7 +851,7 @@ function hardMode(){
     
             function Turret (scene)
             {
-                Phaser.GameObjects.Sprite.call(this, scene, 0, 0, 'sprites', 'turret');
+                Phaser.GameObjects.Sprite.call(this, scene, 0, 0, 'turret');
                 this.nextTic = 0;
             },
             place: function(i, j) {            
