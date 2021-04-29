@@ -400,12 +400,12 @@ function mediumMode(){
     let path;
     let turrets;
     let enemies;
-    let money = 1000;
+    let money = 10;
     moneyCounter.innerText = money
     
-    let ENEMY_SPEED = 0.2/10000;
+    let ENEMY_SPEED = .6/10000;
     
-    let BULLET_DAMAGE = 50;
+    let BULLET_DAMAGE = 100;
     
     let map =  [[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1,-1,-1,-1, 0,-1,-1,-1],
                 [-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0,-1,-1,-1,-1,-1,-1,-1],
@@ -526,7 +526,7 @@ function mediumMode(){
             {
                 if(time > this.nextTic) {
                     this.fire();
-                    this.nextTic = time + 1000;
+                    this.nextTic = time + 400;
                 }
             }
     });
@@ -683,7 +683,7 @@ function mediumMode(){
                 enemy.setVisible(true);
                 enemy.startOnPath();
     
-                this.nextEnemy = time + 10000;
+                this.nextEnemy = time + 1100;
             }       
         }
     }
