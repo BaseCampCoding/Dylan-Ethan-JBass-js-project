@@ -1,4 +1,8 @@
 /* HIDE OVERFLOW CLASS */
+html {
+  font-family: 'Creepster', cursive;
+}
+
 .bodyOverflow {
   overflow: hidden;
 }
