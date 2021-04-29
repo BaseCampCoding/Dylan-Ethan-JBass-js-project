@@ -149,7 +149,7 @@ function easyMode(){
                     this.setVisible(false);
                     playerHealth.value -= 10;
                     if (playerHealth.value <= 0) {
-                        alert("Game Over");
+                        alert("BOO! - this is the scariest thing nate would let me put");
                         document.location.reload();
                     }
                 }
@@ -484,7 +484,7 @@ function mediumMode(){
                     this.setVisible(false);
                     playerHealth.value -= 10;
                     if (playerHealth.value <= 0) {
-                        alert("Game Over");
+                        alert("BOO! - this is the scariest thing nate would let me put");
                         document.location.reload();
                     }
                 }
@@ -835,7 +835,7 @@ function hardMode(){
                     this.setVisible(false);
                     playerHealth.value -= 10;
                     if (playerHealth.value <= 0) {
-                        alert("Game Over");
+                        alert("BOO! - this is the scariest thing nate would let me put");
                         document.location.reload();
                     }
                 }
