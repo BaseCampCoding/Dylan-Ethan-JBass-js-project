@@ -65,18 +65,18 @@ function easyMode(){
     moneyCounter.innerText = money
     let score = 0;
     
-    let ENEMY_SPEED = .5/10000;
+    let ENEMY_SPEED = .7/10000;
     
     let BULLET_DAMAGE = 50;
     
-    let map =  [[ 0,-1, 0, 0, 0, 0, 0, 0, 0,-1,-1,-1,-1, 0 , 0 , 0 , 0, 0, 0, 0],
-                [ 0,-1, 0, 0, 0, 0, 0, 0, 0,-1, 0, 0,-1, 0 , 0 , 0 , 0, 0, 0, 0],
-                [ 0,-1,-1,-1,-1,-1,-1,-1,-1,-1, 0, 0,-1, 0 , 0 , 0 , 0, 0, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1,-1 ,-1, -1 , 0, 0, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 , 0 ,-1 , 0, 0, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1,-1,-1, -1 ,-1,-1 , 0, 0, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1, 0, 0, 0 , 0 , 0 , 0, 0, 0, 0],
-                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,-1, 0, 0, 0 , 0 , 0 , 0, 0, 0, 0]]
+    let map =  [[ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [-1,-1,-1,-1,-1,-1,-1,-1, 0,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1],
+                [ 0, 0, 0, 0, 0, 0, 0, 0,-1,-1, 0,-1, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+                [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]]
     
     function preload() {    
         this.load.image("background", "assets/ gothicvania patreon collection/Old-dark-Castle-tileset-Files/PNG/preview-old-dark-castle-interior-tileset.png");
@@ -261,20 +261,24 @@ function easyMode(){
         this.background.setOrigin(0,0)
         let graphics = this.add.graphics();    
         drawLines(graphics)
-        path = this.add.path(96, -32);
-        path.lineTo(96, 164);
-        path.lineTo(480, 164);
-        path.lineTo(610,164)
-        path.lineTo(610, 30)
-        path.lineTo(800, 30)
-        path.lineTo(800, 225)
-        path.lineTo(900, 225)
-        path.lineTo(990, 225)
-        path.lineTo(990, 355)
-        path.lineTo(670, 355)
-        path.lineTo(670, 530)
+        path = this.add.path(0, 230);
+        path.lineTo(200, 230);
+        path.lineTo(510, 225);
+        path.lineTo(510, 270)
+        path.lineTo(600, 270)
+        path.lineTo(630, 210)
+        path.lineTo(700, 210)
+        path.lineTo(710, 270)
+        path.lineTo(800, 270)
+        path.lineTo(900, 210)
+        path.lineTo(970, 210)
+        path.lineTo(970, 250)
+        path.lineTo(1200, 250)
+        path.lineTo(1250, 220)
+        path.lineTo(1300, 220)
+        
 
-        graphics.lineStyle(1, 0xffffff, 0);
+        graphics.lineStyle(1, 0xffffff, 1);
         path.draw(graphics).setVisible(false);
         
         enemies = this.physics.add.group({ classType: Enemy, runChildUpdate: true });
