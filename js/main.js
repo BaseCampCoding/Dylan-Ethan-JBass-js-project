@@ -82,16 +82,12 @@ function easyMode(){
         this.load.image("background", "assets/ gothicvania patreon collection/Old-dark-Castle-tileset-Files/PNG/preview-old-dark-castle-interior-tileset.png");
         this.load.atlas('sprites', 'assets/spritesheet.png', 'assets/spritesheet.json');
         this.load.spritesheet('enemy', 'assets/ gothicvania patreon collection/Gothic-hero-Files/PNG/gothic-hero-run.png', {
-            frameWidth: 50,
-            frameHeight: 40
+            frameWidth: 60,
+            frameHeight: 48
         });
         this.load.spritesheet('turret', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/with-stroke/hell-beast-idle.png', {
-            frameWidth: 50,
+            frameWidth: 55,
             frameHeight: 67
-        });
-        this.load.spritesheet('turret2', 'assets/ gothicvania patreon collection/demon-Files/PNG/demon-idle.png', {
-            frameWidth: 120,
-            frameHeight: 100
         });
         this.load.spritesheet('bullet', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/fire-ball.png', {
             frameWidth: 16,
@@ -356,11 +352,6 @@ function easyMode(){
                 turret.setActive(true);
                 turret.setVisible(true);
                 turret.place(i, j);
-                console.log(money)
-                if (money >= 5){
-                    console.log(money)
-                    turret.setTexture('turret2')
-                }
             }   
         }
     }
@@ -425,11 +416,11 @@ function mediumMode(){
         this.load.image("background", "assets/ gothicvania patreon collection/Gothic-Horror-Files/PNG/PREVIEW-gothic-horror.png")
         this.load.atlas('sprites', 'assets/spritesheet.png', 'assets/spritesheet.json');
         this.load.spritesheet('enemy', 'assets/ gothicvania patreon collection/Gothic-hero-Files/PNG/gothic-hero-run.png', {
-            frameWidth: 50,
-            frameHeight: 40
+            frameWidth: 60,
+            frameHeight: 48
         });
         this.load.spritesheet('turret', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/with-stroke/hell-beast-idle.png', {
-            frameWidth: 50,
+            frameWidth: 55,
             frameHeight: 67
         });
         this.load.spritesheet('bullet', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/fire-ball.png', {
@@ -777,11 +768,11 @@ function hardMode(){
         this.load.image("background", "hard_platform.jpg")
         this.load.atlas('sprites', 'assets/spritesheet.png', 'assets/spritesheet.json');
         this.load.spritesheet('enemy', 'assets/ gothicvania patreon collection/Gothic-hero-Files/PNG/gothic-hero-run.png', {
-            frameWidth: 50,
-            frameHeight: 40
+            frameWidth: 60,
+            frameHeight: 48
         });
         this.load.spritesheet('turret', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/with-stroke/hell-beast-idle.png', {
-            frameWidth: 50,
+            frameWidth: 55,
             frameHeight: 67
         });
         this.load.spritesheet('bullet', 'assets/ gothicvania patreon collection/Hell-Beast-Files/PNG/fire-ball.png', {
