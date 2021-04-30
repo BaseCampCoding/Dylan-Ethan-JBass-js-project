@@ -47,6 +47,10 @@ html {
   font-family: "Creepster", cursive;
 }
 
+canvas{
+  box-shadow: 10px 10px 5px grey;
+}
+
 progress {
   border: none;
   width: 400px;

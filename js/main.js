@@ -807,7 +807,7 @@ function hardMode(){
             startOnPath: function ()
             {
                 this.follower.t = 0;
-                this.hp = Math.floor(Math.random()* 1001);
+                this.hp = Math.floor(Math.random()* 800);
                 
                 path.getPoint(this.follower.t, this.follower.vec);
                 
