@@ -1,16 +1,50 @@
 /* HIDE OVERFLOW CLASS */
 html {
-  font-family: 'Creepster', cursive;
+  font-family: "Creepster", cursive;
+
 }
 
 .bodyOverflow {
   overflow: hidden;
 }
 
+#textScore {
+  position: relative;
+  left: 500px;
+  bottom: 153px;
+  width: 300px;
+}
+
+#score {
+  position: relative;
+  left: 560px;
+  bottom: 201px;
+  width: 300px;
+}
+
+#moneyScore {
+  position: relative;
+  left: 500px;
+  bottom: 130px;
+  width: 300px;
+}
+
+#money {
+  position: relative;
+  left: 565px;
+  bottom: 178px;
+  width: 300px;
+}
+
+#gameTitle{
+  position: relative; 
+  left: 4%;
+}
+
 .title {
   position: relative;
   color: white;
-  font-family: 'Creepster', cursive;
+  font-family: "Creepster", cursive;
 }
 
 progress {
@@ -18,6 +52,8 @@ progress {
   width: 400px;
   height: 60px;
   background: crimson;
+  position: relative;
+  left: 04%;
 }
 
 progress {
@@ -48,7 +84,7 @@ progress::-webkit-progress-bar {
 /* TITLE */
 #title {
   position: absolute;
-  font-family: 'Creepster', cursive;
+  font-family: "Creepster", cursive;
   top: 25%;
   left: 0;
   right: 0;
@@ -156,14 +192,11 @@ progress::-webkit-progress-bar {
 
 /* GAME CONTAINER */
 #game-container {
-  bottom: 90;
+  margin-bottom: -15%;
 }
 
 /* END GAME CONTAINER */
 
-/* CANVAS */
-#canvas {
-  background: grey;
-  height: 600px;
-  width: 800px;
-}
+/* Gamescreen */
+
+
